@@ -1,5 +1,7 @@
+import NavBar from "@/components/navbar.server";
 import "./globals.css";
 import type { Metadata } from "next";
+import SideBar from "@/components/sidebar.server";
 
 export const metadata: Metadata = {
 	title: "Sam Bets",
@@ -13,7 +15,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>
+			<body className="flex">
+				<NavBar />
+				<SideBar />
 				<main>{children}</main>
 				<footer className="h-max mt-auto bg-darkBlue py-2 text-lg text-cream">
 					<div className="text-center">By Sam Hurley</div>

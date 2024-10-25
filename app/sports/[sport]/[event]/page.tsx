@@ -23,13 +23,17 @@ export default async function EventPage(props: {
 	});
 
 	return (
-		<div className="items-center justify-between text-center bg-darkBlue">
-			<div className="flex flex-row border-2 flex-grow">
-				<div className="mt-36 ml-72 border-2 w-screen">
-					<ul>
+		<div className="text-center bg-darkBlue">
+			<div className="flex flex-row flex-grow">
+				<div className="mt-36 ml-72 w-screen">
+					<ul className="flex flex-col items-center">
 						{formattedDates.map((date: string) => (
-							<div key={date} className="border-2 m-1 text-lightRed font-bold">
+							<div
+								key={date}
+								className="text-lightRed font-bold p-1 mt-2 mb-0 w-1/3"
+							>
 								{date}
+
 								{events.map((event: Event) => {
 									if (
 										format(new Date(event.commence_time), "dd/MM/yyy") === date
@@ -37,13 +41,13 @@ export default async function EventPage(props: {
 										return (
 											<div
 												key={event.id}
-												className="border-2 flex flex-row justify-center"
+												className="flex flex-row justify-between items-center"
 											>
 												<OddsButton searchParams={props.searchParams} />
-												<li className="text-cream font-thin">
+												<li className="text-cream ">
 													{event.home_team} v {event.away_team}
-													<button className="border-2 ml-2">Away</button>
 												</li>
+												<OddsButton searchParams={props.searchParams} />
 											</div>
 										);
 									}

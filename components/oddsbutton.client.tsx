@@ -13,8 +13,11 @@ export default function OddsButton({ searchParams }: SearchParamProps) {
 	const pathname = usePathname();
 	return (
 		<>
-			<Link className="text-cream" href={`${pathname}/?show=true`}>
-				Home
+			<Link
+				className="p-2 text-cream font-bold border-2 border-lightRed rounded-xl m-2 hover:bg-lightRed"
+				href={`${pathname}/?show=true`}
+			>
+				2.0
 			</Link>
 			{show && <Modal />}
 		</>

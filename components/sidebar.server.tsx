@@ -14,15 +14,27 @@ export default async function SideBar() {
 		}
 	});
 	return (
-		<div className="mt-40 border-2 w-80">
-			<Link href="/sports" className="text-cream font-bold">
-				Sports
-			</Link>
+		<div className="mt-36 border-2 w-72 bg-darkBlue fixed h-screen text-center">
+			<div>
+				<Link href="/" className="text-lightRed font-bold">
+					Home
+				</Link>
+			</div>
+			<div>
+				<Link href="/sports" className="text-lightRed font-bold">
+					Sports
+				</Link>
+			</div>
+			<div>
+				<Link href="/my-bets" className="text-lightRed font-bold">
+					My Bets
+				</Link>
+			</div>
 			<ul>
 				{uniqueSports.map((sport) => (
 					<li key={sport.key}>
 						<Link
-							href={`/sports/${sport.key}`}
+							href={`/sports/${sport.group}`}
 							className={"text-cream"}
 							key={sport.key}
 						>

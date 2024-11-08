@@ -1,25 +1,32 @@
 "use client";
 
-import Link from "next/link";
-import Modal from "./modal.client";
-import { usePathname } from "next/navigation";
+import { Selection } from "@/types/bets";
+import { usePathname, useRouter } from "next/navigation";
 
-type SearchParamProps = {
-	searchParams: Record<string, string> | null | undefined;
-};
+export default function OddsButton(props: { odds: Selection }) {
+	const router = useRouter();
 
-export default function OddsButton({ searchParams }: SearchParamProps) {
-	const show = searchParams?.show;
+	const date = props.odds.date;
+	const time = props.odds.time;
+	const username = props.odds.username;
+	const selection = props.odds.selection;
+	const odds = props.odds?.odds;
 	const pathname = usePathname();
+
+	const oddsButtonClick = (e) => {
+		router.push(
+			`${pathname}/?show=true&selection=${selection}&date=${date}&time=${time}&username=${username}&odds=${odds}`
+		);
+	};
+
 	return (
 		<>
-			<Link
-				className="p-2 text-cream font-bold border-2 border-lightRed rounded-xl m-2 hover:bg-lightRed"
-				href={`${pathname}/?show=true`}
+			<button
+				onClick={oddsButtonClick}
+				className="p-2 text-cream font-bold border-2 border-lightRed rounded-xl m-2 hover:bg-lightRed min-w-16"
 			>
-				2.0
-			</Link>
-			{show && <Modal />}
+				{odds}
+			</button>
 		</>
 	);
 }
